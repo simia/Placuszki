@@ -44,7 +44,7 @@ public class CarController : MonoBehaviour {
 
 		//Debug.Log ("Speed: " + (wheelRR.radius * Mathf.PI * wheelRR.rpm * 60f / 1000f) + "km/h    RPM: " + wheelRL.rpm);
 
-		float scaledTorque = Input.GetAxis("Vertical") * torque;
+		float scaledTorque = GameController.Instance.input.Vertical * torque;
 
 		if(wheelRL.rpm < idealRPM)
 			scaledTorque = Mathf.Lerp(scaledTorque/10f, scaledTorque, wheelRL.rpm / idealRPM );
@@ -54,8 +54,8 @@ public class CarController : MonoBehaviour {
 		DoRollBar(wheelFR, wheelFL);
 		DoRollBar(wheelRR, wheelRL);
 
-		wheelFR.steerAngle = Input.GetAxis("Horizontal") * turnRadius;
-		wheelFL.steerAngle = Input.GetAxis("Horizontal") * turnRadius;
+		wheelFR.steerAngle = GameController.Instance.input.Horizontal * turnRadius;
+		wheelFL.steerAngle = GameController.Instance.input.Horizontal * turnRadius;
 
 		wheelFR.motorTorque = driveMode==DriveMode.Rear  ? 0 : scaledTorque;
 		wheelFL.motorTorque = driveMode==DriveMode.Rear  ? 0 : scaledTorque;

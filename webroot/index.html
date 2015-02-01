@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Demo</title>
+	</head>
+	<body>
+		<script src="jquery-2.1.3.js"></script>
+		<script>
+
+var nextAcc = 0;
+var run = false;
+var interval = null;
+
+$( document ).ready(function() {
+
+	$("#toggleButton").click(function() {
+		if(window.run == false) {
+			window.interval = window.setInterval(function(){
+				$.ajax({
+					url: "http://localhost:1337/status?format=json",
+					cache: false
+				})
+				.done(function(json) {
+					$("#acc").html(json.acceleration);
+					$("#str").html(json.steering);
+					$("#spd").html(json.speed);
+					window.nextAcc = (30 - json.speed)/10;
+					$.ajax({
+						url: "http://localhost:1337/input/" + window.nextAcc + "/0.0?format=json",
+						cache: false
+					});
+				});
+			}, 200);
+			window.run = true;
+		} else {
+			clearInterval(window.interval);
+			window.interval = null;
+			window.run = false;
+		}
+	});
+
+	
+
+
+});
+		</script>
+		<table>
+			<tr>
+				<td>Acceleration</td>
+				<td id="acc"></td>
+			</tr>
+			<tr>
+				<td>Steering</td>
+				<td id="str"></td>
+			</tr>
+			<tr>
+				<td>Speed</td>
+				<td id="spd"></td>
+			</tr>
+		</table>
+		<input type="button" id="toggleButton" value="On/Off" />
+	</body>
+</html>
