@@ -15,7 +15,7 @@ public class Exec : MonoBehaviour
     public static Exec Instance;
     private int execCount;
 
-    public static void OnMain(Action func, bool wait = false)
+    public static void OnMain(Action func, bool wait /*= false*/)
     {
         if (wait)
         {
