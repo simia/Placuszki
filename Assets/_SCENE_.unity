@@ -1421,7 +1421,6 @@ GameObject:
   - 33: {fileID: 223388228}
   - 65: {fileID: 223388227}
   - 23: {fileID: 223388226}
-  - 54: {fileID: 223388225}
   - 114: {fileID: 223388224}
   m_Layer: 11
   m_Name: Bramka3
@@ -1443,21 +1442,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Id: 3
   EnteredMatPrefab: {fileID: 2100000, guid: 5d7c4b8a0c048e749b1fbf241dec608e, type: 2}
---- !u!54 &223388225
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 223388223}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: .0500000007
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 122
-  m_CollisionDetection: 0
 --- !u!23 &223388226
 Renderer:
   m_ObjectHideFlags: 0
@@ -1485,7 +1469,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 223388223}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -1504,7 +1488,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 223388223}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 474.899994, y: 21, z: 410.100006}
+  m_LocalPosition: {x: 474.899994, y: 5.19999981, z: 410.100006}
   m_LocalScale: {x: 24.593071, y: 9.82104874, z: 1.95388079}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2779,7 +2763,6 @@ GameObject:
   - 33: {fileID: 463605631}
   - 65: {fileID: 463605630}
   - 23: {fileID: 463605629}
-  - 54: {fileID: 463605633}
   - 114: {fileID: 463605634}
   m_Layer: 11
   m_Name: Bramka1
@@ -2815,7 +2798,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 463605628}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -2834,26 +2817,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 463605628}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 474.899994, y: 21, z: 157.399994}
+  m_LocalPosition: {x: 474.899994, y: 6.19999981, z: 157.399994}
   m_LocalScale: {x: 24.593071, y: 9.82104874, z: 1.95388079}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 11
---- !u!54 &463605633
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 463605628}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: .0500000007
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 122
-  m_CollisionDetection: 0
 --- !u!114 &463605634
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4515,7 +4483,6 @@ GameObject:
   - 33: {fileID: 766295844}
   - 65: {fileID: 766295843}
   - 23: {fileID: 766295842}
-  - 54: {fileID: 766295841}
   - 114: {fileID: 766295840}
   m_Layer: 11
   m_Name: Bramka2
@@ -4537,21 +4504,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Id: 2
   EnteredMatPrefab: {fileID: 2100000, guid: 5d7c4b8a0c048e749b1fbf241dec608e, type: 2}
---- !u!54 &766295841
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 766295839}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: .0500000007
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 122
-  m_CollisionDetection: 0
 --- !u!23 &766295842
 Renderer:
   m_ObjectHideFlags: 0
@@ -4579,7 +4531,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 766295839}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -4598,7 +4550,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 766295839}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 474.899994, y: 21, z: 273.100006}
+  m_LocalPosition: {x: 474.899994, y: 5.0999999, z: 273.100006}
   m_LocalScale: {x: 24.593071, y: 9.82104874, z: 1.95388079}
   m_Children: []
   m_Father: {fileID: 0}
