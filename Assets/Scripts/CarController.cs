@@ -4,7 +4,7 @@ using System.Collections;
 
 public class CarController : MonoBehaviour {
 
-	public int lastWaypointId = 0;
+	public int nextCheckpointId = 1;
 
 	public float idealRPM = 500f;
 	public float maxRPM = 1000f;
