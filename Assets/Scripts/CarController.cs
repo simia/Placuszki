@@ -4,8 +4,7 @@ using System.Collections;
 
 public class CarController : MonoBehaviour {
 
-	public int nextCheckpointId = 1;
-
+	public string PlayerName = "Placuszek";
 	public float idealRPM = 500f;
 	public float maxRPM = 1000f;
 
@@ -24,11 +23,14 @@ public class CarController : MonoBehaviour {
 
 	public enum DriveMode { Front, Rear, All };
 	public DriveMode driveMode = DriveMode.Rear;
+	
+	int nextCheckpointId;
 
 	public Text speedText;
 
 	void Start() {
 		rigidbody.centerOfMass = centerOfGravity.localPosition;
+		nextCheckpointId = 1;
 	}
 
 	public float Speed() {
@@ -37,6 +39,14 @@ public class CarController : MonoBehaviour {
 
 	public float Rpm() {
 		return wheelRL.rpm;
+	}
+	
+	public int GetNextCheckpoint() {
+		return nextCheckpointId;
+	}
+	
+	public void NextCheckpointIncr() {
+		++nextCheckpointId;
 	}
 
 	void FixedUpdate () {
