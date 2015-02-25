@@ -1,17 +1,17 @@
 using System;
+using UnityEngine;
 
 public class Player
 {
 	public String name { get; set; }
 	public String id { get; set; }
-	//TODO: handle to new car
-	public GenericInput input;
 
-		public Player(String name)
-		{
-			this.name = name;
-			this.id = Guid.NewGuid().ToString();
-			//TODO: spawn a new car
-			this.input = new GenericInput();
-		}
+	public GameObject car;
+	
+	public Player(String name, GameObject car)
+	{
+		this.name = name;
+		this.id = Guid.NewGuid().ToString();
+		this.car = car;
+	}
 }

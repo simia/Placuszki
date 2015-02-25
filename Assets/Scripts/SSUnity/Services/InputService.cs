@@ -10,9 +10,10 @@ public class InputService : Service
     {
         Exec.OnMain(() =>
         {
-			Player player = GameController.Instance.players.findPlayer(request.id);
-			player.input.Vertical = request.vertical;
-			player.input.Horizontal = request.horizontal;
+			Player player = PlayerController.Instance.findPlayer(request.id);
+			CarController car = player.car.GetComponent<CarController>();
+			car.input.Vertical = request.vertical;
+			car.input.Horizontal = request.horizontal;
         }, true);
 
 		return true;

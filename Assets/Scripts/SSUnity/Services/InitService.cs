@@ -8,10 +8,15 @@ public class InitService : Service
 {
     public object Get(InitRequest request)
     {
-		Player player = GameController.Instance.players.newPlayer(request.name);
-
 		InitResponse response = new InitResponse();
-		response.id = player.id;
+
+		Exec.OnMain(() =>
+		{
+			Player player = PlayerController.Instance.newPlayer(request.name);
+			response.id = player.id;
+
+			//TODO: map, checkpoints
+		}, true);
 
 		return response;
     }

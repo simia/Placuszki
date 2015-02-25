@@ -4,6 +4,7 @@ using System.Collections;
 
 public class CarController : MonoBehaviour {
 
+	public GenericInput input = new GenericInput();
 	public string PlayerName = "Placuszek";
 	public float idealRPM = 500f;
 	public float maxRPM = 1000f;
@@ -53,14 +54,19 @@ public class CarController : MonoBehaviour {
 		nextCheckpointId = 1;
 	}
 
-	void FixedUpdate () {
+	void Update() {
+		if (Input.GetKeyUp(KeyCode.K)) {
+			input.keyboardMode = !input.keyboardMode;
+		}
+	}
 
+	void FixedUpdate () {
 		if(speedText!=null)
 			speedText.text = "Speed: " + Speed().ToString("f0") + " km/h";
 
 		//Debug.Log ("Speed: " + (wheelRR.radius * Mathf.PI * wheelRR.rpm * 60f / 1000f) + "km/h    RPM: " + wheelRL.rpm);
 
-		float scaledTorque = GameController.Instance.input.Vertical * torque;
+		float scaledTorque = input.Vertical * torque;
 
 		if(wheelRL.rpm < idealRPM)
 			scaledTorque = Mathf.Lerp(scaledTorque/10f, scaledTorque, wheelRL.rpm / idealRPM );
@@ -70,8 +76,8 @@ public class CarController : MonoBehaviour {
 		DoRollBar(wheelFR, wheelFL);
 		DoRollBar(wheelRR, wheelRL);
 
-		wheelFR.steerAngle = GameController.Instance.input.Horizontal * turnRadius;
-		wheelFL.steerAngle = GameController.Instance.input.Horizontal * turnRadius;
+		wheelFR.steerAngle = input.Horizontal * turnRadius;
+		wheelFL.steerAngle = input.Horizontal * turnRadius;
 
 		wheelFR.motorTorque = driveMode==DriveMode.Rear  ? 0 : scaledTorque;
 		wheelFL.motorTorque = driveMode==DriveMode.Rear  ? 0 : scaledTorque;

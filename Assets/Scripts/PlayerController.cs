@@ -1,19 +1,34 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController
+public class PlayerController : MonoBehaviour
 {
+	public Object carPrefab;
+
+	private static PlayerController m_Instance;
+	public static PlayerController Instance { get { return m_Instance; } }
+
 	private List<Player> players = new List<Player>();
 
-	public Player newPlayer(String name)
+	void Awake()
 	{
-		Player player = new Player(name);
+		m_Instance = this;
+	}
+	
+	void OnDestroy()
+	{
+		m_Instance = null;
+	}
+
+	public Player newPlayer(string name)
+	{
+		GameObject car = Instantiate (carPrefab) as GameObject;
+		Player player = new Player(name, car);
 		players.Add(player);
 		return player;
 	}
 
-	public Player findPlayer(String id)
+	public Player findPlayer(string id)
 	{
 		return players.Find(p => p.id == id);
 	}
