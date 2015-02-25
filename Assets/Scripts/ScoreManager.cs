@@ -10,6 +10,7 @@ public class ScoreManager : MonoBehaviour {
 	
 	private float StartTime;
 	private int changeCounter, lastChange;
+	private bool isEndOfRace;
 	
 	public struct PlayerData {
 		public int LastChckPt;
@@ -37,7 +38,15 @@ public class ScoreManager : MonoBehaviour {
 		if(!ScorePanel)
 			return;
 	
-		if(Input.GetKeyDown(KeyCode.Tab)) {
+		if(isEndOfRace) {
+			if(!ScorePanel.activeSelf)
+				ScorePanel.SetActive(true);
+			
+			if(Input.GetKeyDown(KeyCode.Return)) {
+				ReloadRace();	
+			}
+			
+		} else if(Input.GetKeyDown(KeyCode.Tab)) {
 			ScorePanel.SetActive(!ScorePanel.activeSelf);
 		}
 		
@@ -74,8 +83,28 @@ public class ScoreManager : MonoBehaviour {
 		}
 		
 		++changeCounter;
+		
+		// end condition
+		if(lastChckPt == numOfCheckpoints) {
+			isEndOfRace = true;
+		}
 	}
 	
+	void ReloadRace() {
+		isEndOfRace = false;
+		ScoreTable.Clear();
+		
+		foreach(GameObject g in GameObject.FindGameObjectsWithTag("Player")) {
+			CarController cc = g.GetComponent<CarController>();
+			cc.NextCheckpointReset();
+			cc.Respawn();
+		}
+		
+		SetNextCheckpointLabel(1);
+		StartTime = Time.time;
+		ScorePanel.SetActive(false);
+	}
+		
 	void DrawOnUI() {
 		GameObject scoreLinePrefab = Resources.Load<GameObject>("ScoreLine");
 		// clear all results
@@ -97,6 +126,12 @@ public class ScoreManager : MonoBehaviour {
 			go.transform.GetChild(0).GetComponent<Text>().text = key;
 			go.transform.GetChild(1).GetComponent<Text>().text = pd.LastChckPt.ToString();
 			go.transform.GetChild(2).GetComponent<Text>().text = pd.RaceTime.ToString("f");
+		}
+	}
+	
+	public void SetNextCheckpointLabel(int id) {
+		if(nextCheckpoint) {
+			nextCheckpoint.text = "Next: " + id.ToString();
 		}
 	}
 }

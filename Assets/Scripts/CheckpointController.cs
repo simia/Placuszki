@@ -43,10 +43,7 @@ public class CheckpointController : MonoBehaviour {
 			IsHit = true;
 			ctrl.NextCheckpointIncr();
 
-			Text nextCheckpoint = ((ScoreManager)this.transform.GetComponentInParent<ScoreManager>()).nextCheckpoint;
-			if(nextCheckpoint) {
-				nextCheckpoint.text = "Next: " + ctrl.GetNextCheckpoint();
-			}
+			((ScoreManager)this.transform.GetComponentInParent<ScoreManager>()).SetNextCheckpointLabel(ctrl.GetNextCheckpoint());
 			
 			UpdateTime(ctrl);
 		}

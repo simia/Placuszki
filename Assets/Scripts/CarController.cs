@@ -48,6 +48,10 @@ public class CarController : MonoBehaviour {
 	public void NextCheckpointIncr() {
 		++nextCheckpointId;
 	}
+	
+	public void NextCheckpointReset() {
+		nextCheckpointId = 1;
+	}
 
 	void FixedUpdate () {
 
@@ -112,4 +116,18 @@ public class CarController : MonoBehaviour {
 			                             WheelR.transform.position); 
 	}
 
+	// on fallout respawn in the center of map
+	void OnCollisionEnter(Collision c) {
+		if(c.gameObject.tag == "Fallout") {
+			Respawn();
+		}
+	}
+	
+	public void Respawn() {
+		Vector3 vec = Terrain.activeTerrain.collider.bounds.center;
+		vec.y += 5;
+		this.transform.position = vec;
+		
+		rigidbody.AddForceAtPosition(float.MaxValue * Vector3.down, this.transform.position);
+	}
 }
