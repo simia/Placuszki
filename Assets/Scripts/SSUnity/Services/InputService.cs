@@ -1,4 +1,4 @@
-﻿using ServiceStack.ServiceInterface;
+using ServiceStack.ServiceInterface;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,12 +6,13 @@ using UnityEngine;
 
 public class InputService : Service
 {
-    public object Get(InputModel request)
+    public object Get(InputRequest request)
     {
         Exec.OnMain(() =>
         {
-			GameController.Instance.input.Vertical = request.vertical;
-			GameController.Instance.input.Horizontal = request.horizontal;
+			Player player = GameController.Instance.players.findPlayer(request.id);
+			player.input.Vertical = request.vertical;
+			player.input.Horizontal = request.horizontal;
         }, true);
 
 		return true;

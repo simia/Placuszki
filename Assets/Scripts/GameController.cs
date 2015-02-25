@@ -1,9 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class GameController : StartHost {
 	
-	public GenericInput input = new GenericInput();
+	public GenericInput input = new GenericInput(); //TODO: move to Player
+	public PlayerController players = new PlayerController();
 
 	private static GameController m_Instance;
 	public static GameController Instance { get { return m_Instance; } }
