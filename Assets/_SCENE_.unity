@@ -1888,6 +1888,14 @@ Prefab:
       propertyPath: speedText
       value: 
       objectReference: {fileID: 1963595964}
+    - target: {fileID: 159058, guid: 0acdac7043d2d9c4190d026104edea38, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 159064, guid: 0acdac7043d2d9c4190d026104edea38, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0acdac7043d2d9c4190d026104edea38, type: 2}
   m_RootGameObject: {fileID: 743562696}
