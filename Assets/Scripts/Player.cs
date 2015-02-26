@@ -5,8 +5,7 @@ public class Player
 {
 	public String name { get; set; }
 	public String id { get; set; }
-
-	public GameObject car;
+	public GameObject car { get; set; }
 	
 	public Player(String name, GameObject car)
 	{

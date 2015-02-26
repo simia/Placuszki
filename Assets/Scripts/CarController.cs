@@ -57,6 +57,7 @@ public class CarController : MonoBehaviour {
 	void Update() {
 		if (Input.GetKeyUp(KeyCode.K)) {
 			input.keyboardMode = !input.keyboardMode;
+			Debug.Log("keyboard: " + input.keyboardMode);
 		}
 	}
 

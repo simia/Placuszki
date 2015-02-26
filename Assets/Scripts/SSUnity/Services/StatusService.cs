@@ -16,7 +16,6 @@ public class StatusService : Service
         {
 			if (car == null)
             {
-				//car = GameObject.Find("Car - Decent Skid");
 				car = player.car;
 				Cache.Set<GameObject>(request.id, car);
             }
