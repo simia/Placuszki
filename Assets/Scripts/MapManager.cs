@@ -11,6 +11,19 @@ public class MapManager : MonoBehaviour {
 	Terrain myTerrain;
 	TerrainData myTerrainData;
 		
+	private static MapManager m_Instance;
+	public static MapManager Instance { get { return m_Instance; } }
+	
+	void Awake()
+	{
+		m_Instance = this;
+	}
+	
+	void OnDestroy()
+	{
+		m_Instance = null;
+	}
+
 	// Use this for initialization
 	void Start () {
 		if ( !myTerrain )
@@ -18,13 +31,12 @@ public class MapManager : MonoBehaviour {
 			myTerrain = Terrain.activeTerrain; // find the active terrain
 		}		
 		myTerrainData = myTerrain.terrainData; // store the terrainData
-		GetTerrainData ();				
+		HeightsMap = myTerrainData.GetHeights(0, 0, myTerrainData.heightmapWidth, myTerrainData.heightmapHeight);
+		//printToFile();				
 
 	}
 
-	void GetTerrainData() {
-		HeightsMap = myTerrainData.GetHeights (0, 0, myTerrainData.heightmapWidth, myTerrainData.heightmapHeight);
-
+	/*void printToFile() {
 		StringBuilder sb = new StringBuilder ();
 
 		//string h = "";
@@ -47,7 +59,7 @@ public class MapManager : MonoBehaviour {
 			sw.Write(sb.ToString());
 		}
 		//myTerrainData.heightmapHeight
-	}
+	}*/
 	
 	// Update is called once per frame
 	void Update () {

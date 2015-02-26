@@ -7,6 +7,7 @@ public class ScoreManager : MonoBehaviour {
 	public float minDistance = 100;
 	public Text nextCheckpoint;
 	public GameObject ScorePanel;
+	public List<Vector3> checkpoints = new List<Vector3> ();
 	
 	private float StartTime;
 	private int changeCounter, lastChange;
@@ -24,9 +25,23 @@ public class ScoreManager : MonoBehaviour {
 	
 	Dictionary<string, PlayerData> ScoreTable = new Dictionary<string, PlayerData>();
 
+	private static ScoreManager m_Instance;
+	public static ScoreManager Instance { get { return m_Instance; } }
+	
+	void Awake()
+	{
+		m_Instance = this;
+	}
+	
+	void OnDestroy()
+	{
+		m_Instance = null;
+	}
+
 	// Use this for initialization
 	void Start () {
 		ScoreTable.Clear();
+		checkpoints.Clear();
 		generateCheckpoints();
 		StartTime = Time.time;
 		changeCounter = 0;
@@ -69,6 +84,7 @@ public class ScoreManager : MonoBehaviour {
 			chck.transform.SetParent(this.transform);
 			chck.transform.position = new Vector3(Random.Range(minBounds.x, maxBounds.x), 4, Random.Range(minBounds.z, maxBounds.z));
 			((CheckpointController)chck.GetComponent<CheckpointController>()).Id = i;
+			checkpoints.Add(chck.transform.position);
 		}	
 	}
 	

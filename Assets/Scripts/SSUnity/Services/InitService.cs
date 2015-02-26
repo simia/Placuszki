@@ -14,8 +14,12 @@ public class InitService : Service
 		{
 			Player player = PlayerController.Instance.newPlayer(request.name);
 			response.id = player.id;
+			response.position = player.car.transform.position;
+			response.rotation = player.car.transform.rotation;
+			response.checkpoints = ScoreManager.Instance.checkpoints;
+			response.map = MapManager.Instance.HeightsMap;
 
-			//TODO: map, checkpoints
+			//TODO: map
 		}, true);
 
 		return response;
