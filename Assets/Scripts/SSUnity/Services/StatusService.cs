@@ -26,6 +26,7 @@ public class StatusService : Service
 			response.speed = controller.Speed();
 			response.position = car.transform.position;
 			response.rotation = car.transform.rotation;
+			response.nextCheckpoint = controller.GetNextCheckpoint() - 1;
 
         }, true);
 

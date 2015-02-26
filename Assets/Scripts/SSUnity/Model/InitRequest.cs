@@ -8,3 +8,9 @@ public class InitRequest
 {
 	public string name { get; set; }
 }
+
+[Route("/init")]
+public class StartCountdownRequest
+{
+	public string name { get; set; }
+}

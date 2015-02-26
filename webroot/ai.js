@@ -10,8 +10,24 @@ $(document).ready(function() {
 					cache: false
         })
         .done(function(json) {
-            $("#playerId").html(json.id);
-            //TODO map, checkpoints...
+            if(json == false) {
+                $("#playerId").html("Too late!!! :(");
+            } else {
+                $("#playerId").html(json.id);
+                //TODO map, checkpoints...
+            }
+
+        });
+    });
+    
+    $("#countdownButton").click(function() {
+        
+        $.ajax({
+					url: "http://localhost:1337/init?format=json",
+					cache: false
+        })
+        .done(function(json) {
+            $("#countdownLabel").html(json);
         });
     });
     
@@ -40,8 +56,5 @@ $(document).ready(function() {
 			window.run = false;
 		}
 	});
-
-	
-
 
 });

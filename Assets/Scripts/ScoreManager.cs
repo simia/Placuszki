@@ -103,11 +103,13 @@ public class ScoreManager : MonoBehaviour {
 		// end condition
 		if(lastChckPt == numOfCheckpoints) {
 			isEndOfRace = true;
+			GameController.Instance.gameState = GameController.GameState.Score;
 		}
 	}
 	
 	void ReloadRace() {
 		isEndOfRace = false;
+		GameController.Instance.restartGame();
 		ScoreTable.Clear();
 		
 		foreach(GameObject g in GameObject.FindGameObjectsWithTag("Player")) {

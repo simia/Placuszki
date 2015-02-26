@@ -8,6 +8,4 @@ public class InitResponse
 	public Quaternion rotation { get; set; }
 	public List<Vector3> checkpoints { get; set; }
 	public float[,] map { get; set; }
-
-	// TODO: map
 }

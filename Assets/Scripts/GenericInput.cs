@@ -10,12 +10,15 @@ public class GenericInput
 
 	public float Vertical {
 		get {
-			if (keyboardMode)
+			if (keyboardMode && GameController.Instance.gameState == GameController.GameState.Race)
 				return Input.GetAxis("Vertical");
 			else
 				return m_vertical;
 		}
-		set { m_vertical = normalize(value); }
+		set {
+			if (GameController.Instance.gameState == GameController.GameState.Race)
+				m_vertical = normalize(value);
+		}
 	}
 	public float Horizontal {
 		get {
@@ -24,7 +27,9 @@ public class GenericInput
 			else
 				return m_horizontal;
 		}
-		set { m_horizontal = normalize(value); }
+		set {
+			m_horizontal = normalize(value);
+		}
 	}
 	
 	private float normalize(float val) {

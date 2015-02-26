@@ -7,4 +7,5 @@ public class StatusResponse
     public float speed { get; set; }
 	public Vector3 position { get; set; }
 	public Quaternion rotation { get; set; }
+	public int nextCheckpoint { get; set; }
 }
