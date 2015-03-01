@@ -4,8 +4,8 @@ using UnityEngine;
 public class InitResponse
 {
 	public string id { get; set; }
-	public Vector3 position { get; set; }
-	public Quaternion rotation { get; set; }
-	public List<Vector3> checkpoints { get; set; }
+	public float[] position { get; set; }
+	public float[] rotation { get; set; }
+	public List<float[]> checkpoints { get; set; }
 	public float[,] map { get; set; }
 }

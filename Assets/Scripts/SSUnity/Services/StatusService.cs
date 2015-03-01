@@ -24,8 +24,8 @@ public class StatusService : Service
 			response.acceleration = controller.input.Vertical;
 			response.steering = controller.input.Horizontal;
 			response.speed = controller.Speed();
-			response.position = car.transform.position;
-			response.rotation = car.transform.rotation;
+			response.position = new float[] { car.transform.position.x, car.transform.position.y, car.transform.position.z };
+			response.rotation = new float[] { car.transform.eulerAngles.x, car.transform.eulerAngles.y, car.transform.eulerAngles.z };
 			response.nextCheckpoint = controller.GetNextCheckpoint() - 1;
 
         }, true);

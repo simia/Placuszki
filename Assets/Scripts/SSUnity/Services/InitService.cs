@@ -16,9 +16,9 @@ public class InitService : Service
 			{
 				Player player = PlayerController.Instance.newPlayer(request.name);
 				response.id = player.id;
-				response.position = player.car.transform.position;
-				response.rotation = player.car.transform.rotation;
-				response.checkpoints = ScoreManager.Instance.checkpoints;
+				response.position = new float[] { player.car.transform.position.x, player.car.transform.position.y, player.car.transform.position.z };
+				response.rotation = new float[] { player.car.transform.eulerAngles.x, player.car.transform.eulerAngles.y, player.car.transform.eulerAngles.z };
+				response.checkpoints = ScoreManager.Instance.checkpoints.ConvertAll(v => new float[] { v.x, v.y, v.z });
 				response.map = MapManager.Instance.HeightsMap;
 			}
 		}, true);
@@ -26,11 +26,12 @@ public class InitService : Service
 			return response;
 		return false;
     }
+
 }
 
 public class CountdownService : Service
 {
-	public object Get(StartCountdownRequest request)
+	public object Get(TimeToStartRequest request)
 	{
 		float response = -1.0f;
 		Exec.OnMain(() =>

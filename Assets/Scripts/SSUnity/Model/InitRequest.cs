@@ -10,7 +10,6 @@ public class InitRequest
 }
 
 [Route("/init")]
-public class StartCountdownRequest
+public class TimeToStartRequest
 {
-	public string name { get; set; }
 }
