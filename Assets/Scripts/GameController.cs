@@ -58,6 +58,7 @@ public class GameController : StartHost {
 		if (gameState == GameState.Init && Time.time > startTime) {
 			Debug.Log("GO GO GO");
 			gameState = GameState.Race;
+			ScoreManager.Instance.StartTime = Time.time;
 		}
 	}
 	

@@ -9,7 +9,7 @@ public class ScoreManager : MonoBehaviour {
 	public GameObject ScorePanel;
 	public List<Vector3> checkpoints = new List<Vector3> ();
 	
-	private float StartTime;
+	public float StartTime;
 	private int changeCounter, lastChange;
 	private bool isEndOfRace;
 	

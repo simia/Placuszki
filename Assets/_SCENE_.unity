@@ -11845,6 +11845,7 @@ MonoBehaviour:
   nextCheckpoint: {fileID: 345560071}
   ScorePanel: {fileID: 828963873}
   checkpoints: []
+  StartTime: 0
 --- !u!114 &1931493893
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour
 		car.GetComponent<CarController> ().PlayerName = name; //TODO
 		Player player = new Player(name, car);
 		players.Add(player);
+		ScoreManager.Instance.UpdatePlayerScore (name, 0);
 		return player;
 	}
 
